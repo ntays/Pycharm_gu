@@ -1,2 +1,0 @@
-test
-file_2
