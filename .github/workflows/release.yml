@@ -12,6 +12,9 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Create Executable
         id: create_executable
         uses: sayyid5416/pyinstaller@v1
@@ -20,7 +23,8 @@ jobs:
           spec: 'main.py'
           upload_exe_with_name: 'shrimp_package'
           options: --onefile
-    - name: Release
+
+      - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
